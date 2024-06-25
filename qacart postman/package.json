@@ -1,0 +1,15 @@
+{
+  "name": "qacart-postman",
+  "version": "1.0.0",
+  "description": "to test api using postman",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^1.0.0-alpha.23",
+    "json-server-auth": "^2.1.0"
+  },
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}

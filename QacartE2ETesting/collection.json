@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "9eb00af4-c61f-4a45-bd6d-7efbbfe9636d",
+		"name": "Courses API",
+		"description": "All the APIs that controls the courses in Qacart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29778552"
+	},
+	"item": [
+		{
+			"name": "Create Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonFile = pm.response.json()\r",
+							"var courseID = jsonFile.id\r",
+							"pm.environment.set(\"courseID\", courseID);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"java\",\r\n    \"description\": \"full java course from zero\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/courses/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"courses",
+						""
+					]
+				},
+				"description": "to add new course for Qacart"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check that the API respose code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"check if the respose contain postman \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"java\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"check the title of first course\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.title).to.eql(\"java\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "to get a course by specific id"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"title\": \"automation\",\r\n\"description\": \"full automation course from zero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "to edit specific course"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "to delete a specific course"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Courses After Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/courses/{{courseID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"courses",
+						"{{courseID}}"
+					]
+				},
+				"description": "to get all courses"
+			},
+			"response": []
+		}
+	]
+}

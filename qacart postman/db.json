@@ -1,0 +1,25 @@
+{
+  "courses": [
+    {
+      "title": "postman",
+      "description": "full postman course from zero",
+      "id": "1"
+    },
+    {
+      "title": "automation",
+      "description": "full automation course from zero",
+      "id": "2"
+    },
+    {
+      "title": "cypress",
+      "description": "full cypress course from zero",
+      "id": "3"
+    },
+    {
+      "title": "automation",
+      "description": "full automation course from zero",
+      "id": "da5c"
+    }
+  ],
+  "users": []
+}
